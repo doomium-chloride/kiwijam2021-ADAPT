@@ -1,41 +1,12 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var gravity = 100
-
-var bullet_speed = 1000
-
-var bullet_damage = 1
-
-var base_bullet_spread = PI / 100
-
-var trident_dmg = 1
-
 const main_menu = "res://Scenes/Menus/Home.tscn"
-
-const left_dir = Vector2(-1, 0)
-const right_dir = Vector2(1, 0)
-
-signal update_hp(hp)
-signal set_max_hp(hp)
-
-signal update_ammo(ammo)
-signal set_max_ammo(ammo)
-signal set_ammo_spacing(spacing)
 
 signal summon_minions(target, tag)
 signal release_minions(tag)
 signal multiply_minions(tag)
 
-var drop_chance = 0.2
-
 var current_scene = null
-
-const low_ammo = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,13 +14,6 @@ func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-func wobble(t, freq):
-	return sin(t * freq) * PI / 32
 
 func flip_coin():
 	var coin = randi() % 2
@@ -59,12 +23,6 @@ func chance(proc_chance):
 	if proc_chance >= 1:
 		return true
 	return randf() < proc_chance
-
-func bullet_spread(left):
-	var angle = randf() * base_bullet_spread
-	var dir = -1 if left else 1
-	var up = -1 if flip_coin() else 1
-	return Vector2(dir * cos(angle) * bullet_speed, up * sin(angle) * bullet_speed)
 
 func random_direction():
 	var x = (randi() % 3) - 1
