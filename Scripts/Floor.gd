@@ -12,8 +12,8 @@ var half = length / 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for row in range(rows):
-		for column in range(columns):
+	for row in range(-rows, rows):
+		for column in range(-columns, columns):
 			make_tile(row, column)
 
 
