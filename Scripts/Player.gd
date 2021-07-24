@@ -32,7 +32,8 @@ func _process(delta):
 		Global.emit_signal("release_minions", "is_darkness")
 	if Input.is_action_just_pressed("ui_control"):
 		multiply_minions()
-	pass
+	if Input.is_action_just_pressed("ui_end"):
+		speed *= 2
 
 
 func _physics_process(delta):

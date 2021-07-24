@@ -19,7 +19,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 86.25
 height = 0.0
 
@@ -43,7 +43,7 @@ frame = 1
 
 [node name="CollisionHead" type="CollisionShape2D" parent="."]
 position = Vector2( 1.25, -66.25 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2( 1.25, 75 )
