@@ -185,6 +185,7 @@ position = Vector2( -0.0601044, -0.244839 )
 rotation = -0.0141859
 z_index = -1
 texture = ExtResource( 1 )
+flip_h = true
 hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
