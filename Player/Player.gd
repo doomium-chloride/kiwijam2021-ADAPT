@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
+const PlayerStats = preload("res://Player/PlayerStats.tscn")
 
 export var ACCELERATION = 500
 export var MAX_SPEED = 80

@@ -29,6 +29,7 @@ func _ready():
 func _process(delta):
 	cool_down_shadow(delta)
 	regen_adapt(delta)
+	update_adapt_bar_state()
 	if Input.is_action_just_pressed("ui_select"):
 		summon_shadow()
 		pass
@@ -58,6 +59,7 @@ func summon_shadow():
 	shadow.z_index = z_index - 1
 	get_tree().get_root().add_child(shadow)
 	shadow_cooling_down = true
+	update_adapt_bar_state()
 
 func lose_adapt(value):
 	var newValue = adapt - value
@@ -83,3 +85,6 @@ func cool_down_shadow(delta):
 		shadow_cooling_down = false
 		return
 	shadow_cooldown_timer += delta
+
+func update_adapt_bar_state():
+	adapt_bar.invert(shadow_cooling_down or adapt <= shadow_cost)
