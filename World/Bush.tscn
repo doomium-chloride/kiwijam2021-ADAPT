@@ -9,6 +9,7 @@ height = 12.0
 
 [node name="Bush" type="StaticBody2D"]
 
+
 [node name="ShadowSprite" type="Sprite" parent="."]
 position = Vector2( 0, 3 )
 texture = ExtResource( 2 )
