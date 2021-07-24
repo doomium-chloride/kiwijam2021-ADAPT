@@ -26,7 +26,12 @@ func _process(delta):
 	update_adapt_bar_state()
 	if Input.is_action_just_pressed("ui_select"):
 		summon_shadow()
-		pass
+	if Input.is_action_just_pressed("ui_shift"):
+		Global.emit_signal("summon_minions", self, "is_darkness")
+	if Input.is_action_just_released("ui_shift"):
+		Global.emit_signal("release_minions", "is_darkness")
+	if Input.is_action_just_pressed("ui_control"):
+		multiply_minions()
 	pass
 
 
@@ -85,4 +90,8 @@ func take_damage(damage):
 	if dead:
 		# TODO: go to death scene
 		queue_free()
-		
+
+func multiply_minions():
+	if lose_adapt(max_adapt * 0.99):
+		return
+	Global.emit_signal("multiply_minions", "is_darkness")

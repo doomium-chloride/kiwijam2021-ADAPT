@@ -29,7 +29,9 @@ func _on_Bullet_body_entered(body):
 		if body.get("is_light") == true:
 			if body.has_method("take_damage"):
 				body.take_damage(damage)
+				queue_free()
 	else:
 		if body.get("is_darkness") == true:
 			if body.has_method("take_damage"):
 				body.take_damage(damage)
+				queue_free()
