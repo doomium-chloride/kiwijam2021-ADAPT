@@ -27,6 +27,10 @@ signal update_ammo(ammo)
 signal set_max_ammo(ammo)
 signal set_ammo_spacing(spacing)
 
+signal summon_minions(target, tag)
+signal release_minions(tag)
+signal multiply_minions(tag)
+
 var drop_chance = 0.2
 
 var current_scene = null
