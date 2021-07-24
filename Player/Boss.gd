@@ -7,6 +7,7 @@ var velocity = Vector2.ZERO
 var move_dir = Global.random_direction()
 
 var enemy_class = load("res://Enemies/Enemy.tscn")
+const bullet_class = preload("res://Actors/Bullet.tscn")
 
 var is_darkness = false
 var is_light = true
@@ -17,6 +18,9 @@ onready var animationState = animationTree.get("parameters/playback")
 
 var adapted = false
 var targets = []
+
+export var max_hp = 10
+var hp = max_hp
 
 func _physics_process(delta):
 #	var input_vector = Vector2.ZERO
@@ -39,6 +43,7 @@ func _physics_process(delta):
 	move_and_slide(velocity);
 
 func _process(delta):
+	shoot()
 	if Input.is_action_just_pressed("ui_home"):
 		spawn_enemy()
 		pass
@@ -91,11 +96,28 @@ func get_chase_dir():
 
 func damage_adapt(dmg):
 	adapted = true
-	is_darkness = false
-	is_light = true
+	is_darkness = adapted
+	is_light = not adapted
 	var to_erase = []
 	for target in targets:
 		if target.get("is_darkness") == true:
 			to_erase.append(target)
 	for target in to_erase:
 		targets.erase(target)
+
+func shoot():
+	if not $ShootCooldown.is_stopped():
+		return
+	if not is_chasing():
+		return
+	$ShootCooldown.start()
+	var bullet = bullet_class.instance()
+	bullet.position = get_position()
+	bullet.set_adapted(adapted)
+	bullet.direction = move_dir
+	get_tree().get_root().add_child(bullet)
+
+func take_damage(damage):
+	hp -= damage
+	if hp <=  0:
+		queue_free()
