@@ -14,6 +14,10 @@ config/name="ADAPT"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
 [importer_defaults]
 
 texture={

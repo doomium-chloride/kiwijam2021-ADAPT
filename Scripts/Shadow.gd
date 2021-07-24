@@ -27,3 +27,9 @@ func _process(delta):
 		print(scale)
 		scale += Vector2(growth_speed, growth_speed) * delta
 	pass
+
+
+func _on_Shadow_area_entered(area):
+	if area.has_method("darken"):
+		area.darken()
+	pass # Replace with function body.

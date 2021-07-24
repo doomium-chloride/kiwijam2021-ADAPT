@@ -16,3 +16,5 @@ shape = SubResource( 1 )
 position = Vector2( -0.810793, -9.53674e-07 )
 scale = Vector2( 2.01183, 3.4 )
 texture = ExtResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_Shadow_area_entered"]
