@@ -15,7 +15,7 @@ var base_bullet_spread = PI / 100
 
 var trident_dmg = 1
 
-const main_menu = "res://Scenes/Menus/Home.tscn"
+const main_menu = "res://Menu/HomeMenu.tscn"
 
 const left_dir = Vector2(-1, 0)
 const right_dir = Vector2(1, 0)
