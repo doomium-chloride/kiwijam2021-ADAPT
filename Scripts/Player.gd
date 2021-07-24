@@ -90,6 +90,7 @@ func take_damage(damage):
 	if dead:
 		# TODO: go to death scene
 		queue_free()
+		Global.goto_scene("res://Menu/HomeMenu.tscn")
 
 func multiply_minions():
 	if lose_adapt(max_adapt * 0.99):
