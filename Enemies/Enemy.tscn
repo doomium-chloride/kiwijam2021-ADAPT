@@ -176,7 +176,7 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=21]
 
 [sub_resource type="CircleShape2D" id=22]
-radius = 129.861
+radius = 174.871
 
 [node name="Enemy" type="KinematicBody2D"]
 position = Vector2( 377.328, 257.03 )
@@ -220,4 +220,6 @@ shape = SubResource( 22 )
 process_mode = 0
 autostart = true
 
+[connection signal="body_entered" from="Sight" to="." method="_on_Sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_Sight_body_exited"]
 [connection signal="timeout" from="WalkTimer" to="." method="_on_WalkTimer_timeout"]

@@ -6,6 +6,7 @@ extends Area2D
 # var b = "text"
 export var growth_speed = 10;
 export var max_size = 5
+export var damage = 1
 
 var player = null
 
@@ -26,10 +27,13 @@ func _process(delta):
 	else:
 		print(scale)
 		scale += Vector2(growth_speed, growth_speed) * delta
-	pass
 
 
 func _on_Shadow_area_entered(area):
 	if area.has_method("darken"):
 		area.darken()
-	pass # Replace with function body.
+
+
+func _on_Shadow_body_entered(body):
+	if body.has_method("damage_adapt"):
+		body.damage_adapt(damage);

@@ -2,9 +2,7 @@ extends KinematicBody2D
 
 const shadow_class = preload("res://Actors/Shadow.tscn")
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const is_darkness = true
 export var shadow_cooldown = 1
 export var shadow_cost = 20
 export var adapt_regen = 5

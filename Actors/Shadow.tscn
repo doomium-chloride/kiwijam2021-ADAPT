@@ -18,3 +18,4 @@ scale = Vector2( 2.01183, 3.4 )
 texture = ExtResource( 1 )
 
 [connection signal="area_entered" from="." to="." method="_on_Shadow_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Shadow_body_entered"]
