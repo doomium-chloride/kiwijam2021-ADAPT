@@ -95,3 +95,10 @@ func cool_down_shadow(delta):
 
 func update_adapt_bar_state():
 	adapt_bar.invert(shadow_cooling_down or adapt <= shadow_cost)
+
+func take_damage(damage):
+	var dead = lose_adapt(damage)
+	if dead:
+		# TODO: go to death scene
+		queue_free()
+		
