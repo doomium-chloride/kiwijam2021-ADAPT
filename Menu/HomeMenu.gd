@@ -5,6 +5,8 @@ onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxC
 onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/Selector
 onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Selector
 
+const play_scene = "res://Levels/TestLevel.tscn"
+
 var current_selection = 0
 
 func _ready():
@@ -22,8 +24,7 @@ func _process(delta):
 
 func handle_selection(_current_selection):
 	if _current_selection == 0:
-		print("Start Game")
-		queue_free()
+		Global.goto_scene(play_scene)
 	elif _current_selection == 1:
 		print("Add options!")
 	elif _current_selection == 2:
