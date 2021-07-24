@@ -220,6 +220,9 @@ shape = SubResource( 22 )
 process_mode = 0
 autostart = true
 
+[node name="ShootCooldown" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Sight" to="." method="_on_Sight_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_Sight_body_exited"]
 [connection signal="timeout" from="WalkTimer" to="." method="_on_WalkTimer_timeout"]

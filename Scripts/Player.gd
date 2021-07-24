@@ -3,15 +3,11 @@ extends KinematicBody2D
 const shadow_class = preload("res://Actors/Shadow.tscn")
 
 const is_darkness = true
-export var shadow_cooldown = 1
 export var shadow_cost = 20
 export var adapt_regen = 5
 export var speed = 2
 export var max_adapt = 100
 var adapt = max_adapt
-
-var shadow_cooling_down = false
-var shadow_cooldown_timer = 0
 
 onready var adapt_bar = $AdaptBar
 onready var sprite = $AnimatedSprite
@@ -26,7 +22,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	cool_down_shadow(delta)
 	regen_adapt(delta)
 	update_adapt_bar_state()
 	if Input.is_action_just_pressed("ui_select"):
@@ -54,7 +49,7 @@ func _physics_process(delta):
 
 
 func summon_shadow():
-	if shadow_cooling_down:
+	if not $ShadowCooldown.is_stopped():
 		return
 	if lose_adapt(shadow_cost):
 		return
@@ -63,7 +58,7 @@ func summon_shadow():
 	shadow.position = position
 	shadow.z_index = z_index - 1
 	get_tree().get_root().add_child(shadow)
-	shadow_cooling_down = true
+	$ShadowCooldown.start()
 	update_adapt_bar_state()
 
 func lose_adapt(value):
@@ -82,17 +77,8 @@ func update_adapt(new):
 func regen_adapt(delta):
 	update_adapt(adapt + adapt_regen * delta)
 
-func cool_down_shadow(delta):
-	if not shadow_cooling_down:
-		shadow_cooldown_timer = 0
-		return
-	if shadow_cooldown_timer >= shadow_cooldown:
-		shadow_cooling_down = false
-		return
-	shadow_cooldown_timer += delta
-
 func update_adapt_bar_state():
-	adapt_bar.invert(shadow_cooling_down or adapt <= shadow_cost)
+	adapt_bar.invert((not $ShadowCooldown.is_stopped()) or adapt <= shadow_cost)
 
 func take_damage(damage):
 	var dead = lose_adapt(damage)

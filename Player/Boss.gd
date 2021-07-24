@@ -59,7 +59,9 @@ func _on_WalkTimer_timeout():
 
 func _on_Sight_body_entered(body):
 	if adapted:
-		pass
+		if body.get("is_light") == true:
+			targets.append(body)
+			pass
 	else:
 		if body.get("is_darkness") == true:
 			targets.append(body)
@@ -67,7 +69,10 @@ func _on_Sight_body_entered(body):
 
 func _on_Sight_body_exited(body):
 	if adapted:
-		pass
+		if body.get("is_light") == true:
+			if targets.has(body):
+				targets.erase(body)
+			pass
 	else:
 		if body.get("is_darkness") == true:
 			if targets.has(body):
