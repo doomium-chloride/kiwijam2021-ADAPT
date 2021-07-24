@@ -8,22 +8,22 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "idle",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walking",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 0.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 33, 33 )
 
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 2 )
 
 [node name="AdaptBar" parent="." instance=ExtResource( 3 )]
@@ -39,3 +39,9 @@ frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="ShadowCooldown" type="Timer" parent="."]
+one_shot = true
