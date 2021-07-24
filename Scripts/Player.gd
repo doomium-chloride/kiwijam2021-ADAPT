@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 const shadow_class = preload("res://Actors/Shadow.tscn")
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -17,11 +16,13 @@ var shadow_cooling_down = false
 var shadow_cooldown_timer = 0
 
 onready var adapt_bar = $AdaptBar
+onready var sprite = $AnimatedSprite
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	adapt_bar.set_max_adapt(max_adapt)
+	sprite.play("idle")
 	pass # Replace with function body.
 
 
@@ -47,6 +48,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		move_vec.y += 1
 	move_and_collide(move_vec.normalized() * speed)
+	if move_vec.length() > 0:
+		sprite.play("walking")
+	else:
+		sprite.play("idle")
+	
+
 
 func summon_shadow():
 	if shadow_cooling_down:
