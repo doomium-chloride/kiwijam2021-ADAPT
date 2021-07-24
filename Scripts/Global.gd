@@ -62,6 +62,12 @@ func bullet_spread(left):
 	var up = -1 if flip_coin() else 1
 	return Vector2(dir * cos(angle) * bullet_speed, up * sin(angle) * bullet_speed)
 
+func random_direction():
+	var x = (randi() % 3) - 1
+	var y = (randi() % 3) - 1
+	var vector = Vector2(x, y)
+	return vector.normalized()
+
 func goto_scene(path):
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.
