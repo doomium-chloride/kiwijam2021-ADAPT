@@ -23,7 +23,7 @@ animations = [ {
 extents = Vector2( 33, 33 )
 
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 2 )
 
 [node name="AdaptBar" parent="." instance=ExtResource( 3 )]

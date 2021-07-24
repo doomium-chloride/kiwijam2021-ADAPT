@@ -4,8 +4,8 @@ extends Area2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var growth_speed = 15;
-export var max_size = 10
+export var growth_speed = 10;
+export var max_size = 5
 
 var player = null
 
