@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 const shadow_class = preload("res://Actors/Shadow.tscn")
 
+const gameOver = "res://Menu/GameOverMenu.tscn"
+
 const is_darkness = true
 export var shadow_cost = 20
 export var adapt_regen = 5
@@ -88,7 +90,7 @@ func update_adapt_bar_state():
 func take_damage(damage):
 	var dead = lose_adapt(damage)
 	if dead:
-		# TODO: go to death scene
+		Global.goto_scene(gameOver)
 		queue_free()
 
 func multiply_minions():
