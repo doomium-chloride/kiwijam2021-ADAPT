@@ -3,6 +3,8 @@ extends KinematicBody2D
 const drone_class = preload("res://Enemies/Enemy.tscn")
 const is_light = true
 
+const victory = "res://Menu/VictoryMenu.tscn"
+
 export var speed = 1
 export var max_hp = 100
 var hp = max_hp
@@ -45,4 +47,5 @@ func take_damage(damage):
 	hp -= damage
 	$BossHp.update_adapt(hp)
 	if hp <= 0:
+		Global.goto_scene(victory)
 		queue_free()
