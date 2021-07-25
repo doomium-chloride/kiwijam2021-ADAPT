@@ -27,6 +27,8 @@ func set_adapted(dark):
 
 
 func _on_Bullet_body_entered(body):
+	if body == null:
+		return
 	if adapted:
 		if body.get("is_light") == true:
 			if body.has_method("take_damage"):

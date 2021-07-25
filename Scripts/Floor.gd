@@ -3,8 +3,8 @@ extends Node2D
 
 const tile_class = preload("res://Environment/Tile.tscn")
 
-export var rows = 100
-export var columns = 100
+export var rows = 50
+export var columns = 50
 export var tile_scale = 0.5
 
 var length = 64

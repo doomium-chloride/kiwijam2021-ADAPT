@@ -38,6 +38,10 @@ Avoid white circles.
 
 Arrow keys - Movement
 Spacebar - Attack Adapt
+WASD - control corrupted enemy movements
+Shift - Call corrupted enemies toward you
+Ctrl - Clone corrupted enemies
+
 "
 __meta__ = {
 "_edit_use_anchors_": false

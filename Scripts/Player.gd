@@ -19,7 +19,8 @@ onready var hit = $SummonShadowSFX
 func _ready():
 	adapt_bar.set_max_adapt(max_adapt)
 	sprite.play("idle")
-	pass # Replace with function body.
+	if not Global.is_connected("free_self", self, "_free_self"):
+		Global.connect("free_self", self, "_free_self")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -72,8 +73,6 @@ func _physics_process(delta):
 		sprite.play("walking")
 	else:
 		sprite.play("idle")
-	
-
 
 func summon_shadow():
 	if not $ShadowCooldown.is_stopped():
@@ -111,10 +110,12 @@ func update_adapt_bar_state():
 func take_damage(damage):
 	var dead = lose_adapt(damage)
 	if dead:
-		queue_free()
 		Global.goto_scene(gameOver)
 
 func multiply_minions():
 	if lose_adapt(max_adapt * 0.99):
 		return
 	Global.emit_signal("multiply_minions", "is_darkness")
+
+func _free_self():
+	queue_free()
