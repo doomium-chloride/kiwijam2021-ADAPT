@@ -5,7 +5,7 @@ const white_texture = preload("res://Assets/Bullet/whitebullet.png")
 const black_texture = preload("res://Assets/Bullet/blackbullet.png")
 
 export var adapted = false
-export var damage = 100
+export var damage = 10
 export var speed = 100
 var direction = Vector2.ZERO
 
