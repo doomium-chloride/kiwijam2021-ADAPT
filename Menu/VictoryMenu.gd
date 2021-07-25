@@ -4,7 +4,7 @@ extends Control
 onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Selector
 onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/HBoxContainer/Selector
 
-const play_scene = "res://Levels/TestLevel.tscn"
+const play_scene = "res://Menu/HomeMenu.tscn"
 
 var current_selection = 0
 

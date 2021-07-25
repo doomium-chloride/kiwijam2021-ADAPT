@@ -6,7 +6,7 @@ const is_light = true
 const victory = "res://Menu/VictoryMenu.tscn"
 
 export var speed = 1
-export var max_hp = 100
+export var max_hp = 50
 var hp = max_hp
 var move_dir = Global.random_direction()
 
