@@ -5,6 +5,7 @@ onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer/HBoxCo
 onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/HBoxContainer/Selector
 
 const play_scene = "res://Levels/BossLevel.tscn"
+const main_menu = "res://Menu/HomeMenu.tscn"
 
 var current_selection = 0
 
@@ -25,7 +26,7 @@ func handle_selection(_current_selection):
 	if _current_selection == 0:
 		Global.goto_scene(play_scene)
 	elif _current_selection == 1:
-		get_tree().quit()
+		Global.goto_scene(main_menu)
 
 func set_current_selection(_current_selection):
 	selector_one.text = ""
