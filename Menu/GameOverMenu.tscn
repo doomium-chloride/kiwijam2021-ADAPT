@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Menu/Button.gd" type="Script" id=1]
 [ext_resource path="res://Menu/GameOverMenu.gd" type="Script" id=2]
+[ext_resource path="res://Sound/Nightmare.ogg" type="AudioStream" id=3]
 
 [node name="GameOverMenu" type="Control"]
 anchor_right = 1.0
@@ -92,3 +93,7 @@ margin_bottom = 20.0
 text = "Give Up"
 script = ExtResource( 1 )
 code = "Next"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
