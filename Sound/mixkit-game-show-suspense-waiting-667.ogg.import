@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mixkit-game-show-suspense-waiting-667.ogg-f367296d7a16a65d3a49db900274718e.oggstr"
+
+[deps]
+
+source_file="res://Sound/mixkit-game-show-suspense-waiting-667.ogg"
+dest_files=[ "res://.import/mixkit-game-show-suspense-waiting-667.ogg-f367296d7a16a65d3a49db900274718e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
