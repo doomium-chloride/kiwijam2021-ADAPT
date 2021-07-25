@@ -10,7 +10,8 @@ export var speed = 100
 var direction = Vector2.ZERO
 
 func _process(delta):
-	Global.connect("free_self", self, "_free_self")
+	if not Global.is_connected("free_self", self, "_free_self"):
+		Global.connect("free_self", self, "_free_self")
 	if not $VisibilityNotifier2D.is_on_screen():
 		queue_free()
 

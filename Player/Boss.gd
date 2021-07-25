@@ -26,11 +26,16 @@ export var max_hp = 10
 var hp = max_hp
 
 func _ready():
-	Global.connect("summon_minions", self, "_on_summon_minion")
-	Global.connect("release_minions", self, "_on_release_minion")
-	Global.connect("multiply_minions", self, "_on_multiply_minion")
-	Global.connect("move_minions", self, "_on_move_minion")
-	Global.connect("free_self", self, "_free_self")
+	if not Global.is_connected("summon_minions", self, "_on_summon_minion"):
+		Global.connect("summon_minions", self, "_on_summon_minion")
+	if not Global.is_connected("release_minions", self, "_on_release_minion"):
+		Global.connect("release_minions", self, "_on_release_minion")
+	if not Global.is_connected("multiply_minions", self, "_on_multiply_minion"):
+		Global.connect("multiply_minions", self, "_on_multiply_minion")
+	if not Global.is_connected("move_minions", self, "_on_move_minion"):
+		Global.connect("move_minions", self, "_on_move_minion")
+	if not Global.is_connected("free_self", self, "_free_self"):
+		Global.connect("free_self", self, "_free_self")
 
 func _physics_process(delta):
 	if is_chasing():
