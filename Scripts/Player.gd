@@ -42,14 +42,18 @@ func _process(delta):
 	Input.is_action_just_released("wasd_s") or \
 	Input.is_action_just_released("wasd_d"):
 		Global.emit_signal("move_minions", null, "is_darkness")
-	elif Input.is_action_just_pressed("wasd_w"):
-		Global.emit_signal("move_minions", Vector2.UP, "is_darkness")
-	elif Input.is_action_just_pressed("wasd_a"):
-		Global.emit_signal("move_minions", Vector2.LEFT, "is_darkness")
-	elif Input.is_action_just_pressed("wasd_s"):
-		Global.emit_signal("move_minions", Vector2.DOWN, "is_darkness")
-	elif Input.is_action_just_pressed("wasd_d"):
-		Global.emit_signal("move_minions", Vector2.RIGHT, "is_darkness")
+	var minion_control_dir = Vector2()
+	if Input.is_action_just_pressed("wasd_w"):
+		minion_control_dir += Vector2.UP
+	if Input.is_action_just_pressed("wasd_a"):
+		minion_control_dir += Vector2.LEFT
+	if Input.is_action_just_pressed("wasd_s"):
+		minion_control_dir += Vector2.DOWN
+	if Input.is_action_just_pressed("wasd_d"):
+		minion_control_dir += Vector2.RIGHT
+	if minion_control_dir != Vector2.ZERO:
+		Global.emit_signal("move_minions", minion_control_dir.normalized(), 
+		"is_darkness")
 	
 
 
