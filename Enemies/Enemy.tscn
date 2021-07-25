@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/Drone/WhiteDrone.png" type="Texture" id=1]
 [ext_resource path="res://Player/Boss.gd" type="Script" id=2]
+[ext_resource path="res://Music and Sounds/Hurt.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -226,6 +227,9 @@ autostart = true
 
 [node name="ShootCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="ConvertedSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="Sight" to="." method="_on_Sight_body_entered"]
 [connection signal="body_exited" from="Sight" to="." method="_on_Sight_body_exited"]

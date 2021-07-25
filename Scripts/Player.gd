@@ -13,7 +13,7 @@ var adapt = max_adapt
 
 onready var adapt_bar = $AdaptBar
 onready var sprite = $AnimatedSprite
-
+onready var hit = $SummonShadowSFX
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -86,6 +86,7 @@ func summon_shadow():
 	shadow.z_index = z_index - 1
 	get_tree().get_root().add_child(shadow)
 	$ShadowCooldown.start()
+	hit.play()
 	update_adapt_bar_state()
 
 func lose_adapt(value):

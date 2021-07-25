@@ -16,6 +16,7 @@ var is_light = true
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
+onready var convertedSFX = $ConvertedSFX
 
 var adapted = false
 var targets = []
@@ -125,6 +126,7 @@ func damage_adapt(dmg):
 	if adapted:
 		return
 	to_darkness()
+	convertedSFX.play()
 	$ShootCooldown.stop()
 	var to_erase = []
 	for target in targets:

@@ -25,7 +25,7 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
-	move_and_collide(move_dir * speed)
+	move_and_slide(move_dir * speed)
 
 
 func _on_WalkTimer_timeout():
