@@ -1,6 +1,7 @@
 extends Button
 
-onready var monologue = owner
+const back = "res://Menu/HomeMenu.tscn"
+
 export var code = "next"
 
 
@@ -9,4 +10,4 @@ func _ready():
 
 
 func _on_button_press():
-	monologue.emit_signal(code)
+	Global.goto_scene(back)
