@@ -6,10 +6,10 @@ const bush_class = preload("res://Environment/Bush.tscn")
 export var length = 30
 var half = length / 2
 
-export var top = 50
-export var bottom = 50
-export var right = 50
-export var left = 50
+export var top = 40
+export var bottom = 40
+export var right = 40
+export var left = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

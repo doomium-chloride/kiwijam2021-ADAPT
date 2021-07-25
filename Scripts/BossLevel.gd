@@ -25,8 +25,3 @@ func _ready():
 	boss.position = bush.position + Vector2(x, y)
 	
 	add_child(boss)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

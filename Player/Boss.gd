@@ -19,6 +19,7 @@ onready var animationState = animationTree.get("parameters/playback")
 var adapted = false
 var targets = []
 var far_target = null
+var command_dir = null
 
 export var max_hp = 10
 var hp = max_hp
@@ -27,6 +28,7 @@ func _ready():
 	Global.connect("summon_minions", self, "_on_summon_minion")
 	Global.connect("release_minions", self, "_on_release_minion")
 	Global.connect("multiply_minions", self, "_on_multiply_minion")
+	Global.connect("move_minions", self, "_on_move_minion")
 
 func _physics_process(delta):
 #	var input_vector = Vector2.ZERO
@@ -38,6 +40,8 @@ func _physics_process(delta):
 		move_dir = get_chase_dir()
 	elif far_target != null:
 		move_dir = get_dir_from_self(far_target.position)
+	elif command_dir != null:
+		move_dir = command_dir
 		
 	if move_dir != Vector2.ZERO:
 		if move_dir.x > 0:
@@ -62,7 +66,7 @@ func spawn_enemy():
 	get_tree().get_root().add_child(enemy)
 
 func _on_WalkTimer_timeout():
-	if not is_chasing():
+	if not is_chasing() and command_dir == null:
 		move_dir = Global.random_direction()
 
 
@@ -161,3 +165,8 @@ func _on_multiply_minion(tag):
 			enemy.is_darkness = true
 			enemy.is_light = false
 			get_tree().get_root().add_child(enemy)
+
+func _on_move_minion(direction, tag):
+	if self.get(tag) == true:
+		print(direction)
+		command_dir = direction

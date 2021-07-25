@@ -5,6 +5,7 @@ const main_menu = "res://Menu/HomeMenu.tscn"
 signal summon_minions(target, tag)
 signal release_minions(tag)
 signal multiply_minions(tag)
+signal move_minions(direction, tag)
 
 var current_scene = null
 

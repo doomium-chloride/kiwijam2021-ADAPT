@@ -34,6 +34,21 @@ func _process(delta):
 		multiply_minions()
 	if Input.is_action_just_pressed("ui_end"):
 		speed *= 2
+	# move minions
+	if Input.is_action_just_released("wasd_d") or \
+	Input.is_action_just_released("wasd_a") or \
+	Input.is_action_just_released("wasd_s") or \
+	Input.is_action_just_released("wasd_d"):
+		Global.emit_signal("move_minions", null, "is_darkness")
+	elif Input.is_action_just_pressed("wasd_w"):
+		Global.emit_signal("move_minions", Vector2.UP, "is_darkness")
+	elif Input.is_action_just_pressed("wasd_a"):
+		Global.emit_signal("move_minions", Vector2.LEFT, "is_darkness")
+	elif Input.is_action_just_pressed("wasd_s"):
+		Global.emit_signal("move_minions", Vector2.DOWN, "is_darkness")
+	elif Input.is_action_just_pressed("wasd_d"):
+		Global.emit_signal("move_minions", Vector2.RIGHT, "is_darkness")
+	
 
 
 func _physics_process(delta):
