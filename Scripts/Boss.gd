@@ -5,13 +5,10 @@ const is_light = true
 
 const victory = "res://Menu/VictoryMenu.tscn"
 
-<<<<<<< HEAD
-export var speed = 2
-export var max_hp = 100
-=======
+
 export var speed = 1
-export var max_hp = 50
->>>>>>> feature/soundsfx
+export var max_hp = 70
+
 var hp = max_hp
 var move_dir = Global.random_direction()
 
