@@ -47,5 +47,5 @@ func take_damage(damage):
 	hp -= damage
 	$BossHp.update_adapt(hp)
 	if hp <= 0:
-		Global.goto_scene(victory)
 		queue_free()
+		Global.goto_scene(victory)

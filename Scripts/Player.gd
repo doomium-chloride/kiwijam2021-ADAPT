@@ -106,9 +106,8 @@ func update_adapt_bar_state():
 func take_damage(damage):
 	var dead = lose_adapt(damage)
 	if dead:
-		Global.goto_scene(gameOver)
 		queue_free()
-		Global.goto_scene("res://Menu/HomeMenu.tscn")
+		Global.goto_scene(gameOver)
 
 func multiply_minions():
 	if lose_adapt(max_adapt * 0.99):
