@@ -29,13 +29,9 @@ func _ready():
 	Global.connect("release_minions", self, "_on_release_minion")
 	Global.connect("multiply_minions", self, "_on_multiply_minion")
 	Global.connect("move_minions", self, "_on_move_minion")
+	Global.connect("free_self", self, "_free_self")
 
 func _physics_process(delta):
-#	var input_vector = Vector2.ZERO
-#	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") 
-#	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-#	input_vector = input_vector.normalized() 
-
 	if is_chasing():
 		move_dir = get_chase_dir()
 	elif far_target != null:
@@ -58,7 +54,6 @@ func _process(delta):
 	shoot()
 	if Input.is_action_just_pressed("ui_home"):
 		spawn_enemy()
-		pass
 
 func spawn_enemy():
 	var enemy = enemy_class.instance()
@@ -103,12 +98,13 @@ func get_dir_from_self(pos):
 	
 func check_target_is_valid(target):
 	if adapted:
+		print("here")
 		return target.get("is_light") == true
 	else:
 		return target.get("is_darkness") == true
 
 func get_chase_dir():
-	if targets.empty():
+	if not is_chasing():
 		return
 	var target = targets[0]
 	if check_target_is_valid(target):
@@ -121,9 +117,8 @@ func get_chase_dir():
 func damage_adapt(dmg):
 	if adapted:
 		return
-	adapted = true
-	is_darkness = adapted
-	is_light = not adapted
+	to_darkness()
+	$ShootCooldown.stop()
 	var to_erase = []
 	for target in targets:
 		if target.get("is_darkness") == true:
@@ -143,6 +138,11 @@ func shoot():
 	bullet.direction = move_dir
 	get_tree().get_root().add_child(bullet)
 
+func to_darkness():
+	adapted = true
+	is_darkness = true
+	is_light = false
+
 func take_damage(damage):
 	hp -= damage
 	if hp <=  0:
@@ -161,12 +161,12 @@ func _on_multiply_minion(tag):
 		if tag == "is_darkness":
 			var enemy = enemy_class.instance()
 			enemy.position = get_position()
-			enemy.adapted = true
-			enemy.is_darkness = true
-			enemy.is_light = false
+			enemy.to_darkness()
 			get_tree().get_root().add_child(enemy)
 
 func _on_move_minion(direction, tag):
 	if self.get(tag) == true:
-		print(direction)
 		command_dir = direction
+
+func _free_self():
+	queue_free()
