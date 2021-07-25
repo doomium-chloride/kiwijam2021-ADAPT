@@ -6,8 +6,8 @@ const is_light = true
 const victory = "res://Menu/VictoryMenu.tscn"
 
 
-export var speed = 1
-export var max_hp = 70
+export var speed = 15
+export var max_hp = 200
 
 var hp = max_hp
 var move_dir = Global.random_direction()
@@ -19,12 +19,8 @@ func _ready():
 		$AnimatedSprite.play("walking")
 	else:
 		$AnimatedSprite.play("idle")
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	if not Global.is_connected("free_self", self, "_free_self"):
+		Global.connect("free_self", self, "_free_self")
 
 func _physics_process(delta):
 	move_and_slide(move_dir * speed)
@@ -49,5 +45,7 @@ func take_damage(damage):
 	hp -= damage
 	$BossHp.update_adapt(hp)
 	if hp <= 0:
-		queue_free()
 		Global.goto_scene(victory)
+
+func _free_self():
+	queue_free()
