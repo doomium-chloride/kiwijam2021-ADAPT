@@ -8,6 +8,7 @@ var move_dir = Global.random_direction()
 
 var enemy_class = load("res://Enemies/Enemy.tscn")
 const bullet_class = preload("res://Actors/Bullet.tscn")
+const dark_texture = preload("res://Assets/Drone/BlackDrone.png")
 
 var is_darkness = false
 var is_light = true
@@ -142,6 +143,7 @@ func to_darkness():
 	adapted = true
 	is_darkness = true
 	is_light = false
+	$Sprite.texture = dark_texture
 
 func take_damage(damage):
 	hp -= damage
