@@ -99,7 +99,6 @@ func get_dir_from_self(pos):
 	
 func check_target_is_valid(target):
 	if adapted:
-		print("here")
 		return target.get("is_light") == true
 	else:
 		return target.get("is_darkness") == true
