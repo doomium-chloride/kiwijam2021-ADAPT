@@ -12,7 +12,7 @@ func _ready():
 	set_current_selection(0)
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_down") and current_selection < 2:
+	if Input.is_action_just_pressed("ui_down") and current_selection < 1:
 		current_selection += 1
 		set_current_selection(current_selection)
 	elif Input.is_action_just_pressed("ui_up") and current_selection > 0:
