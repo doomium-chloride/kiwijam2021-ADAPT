@@ -55,6 +55,8 @@ func _process(delta):
 	shoot()
 	if Input.is_action_just_pressed("ui_home"):
 		spawn_enemy()
+	if Input.is_action_just_pressed("cheat"):
+		to_darkness()
 
 func spawn_enemy():
 	var enemy = enemy_class.instance()
