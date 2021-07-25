@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Sound/The Abyss.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Environment/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/BossLevel.gd" type="Script" id=4]
@@ -13,3 +14,7 @@ script = ExtResource( 4 )
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 
 [node name="AutoBorder" parent="." instance=ExtResource( 5 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true

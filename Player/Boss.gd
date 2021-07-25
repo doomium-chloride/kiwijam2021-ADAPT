@@ -106,6 +106,8 @@ func get_dir_from_self(pos):
 	return direction.normalized()
 	
 func check_target_is_valid(target):
+	if target == null:
+		return false
 	if adapted:
 		return target.get("is_light") == true
 	else:
