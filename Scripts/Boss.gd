@@ -4,7 +4,7 @@ const drone_class = preload("res://Enemies/Enemy.tscn")
 const is_light = true
 
 export var speed = 1
-export var max_hp = 10
+export var max_hp = 100
 var hp = max_hp
 var move_dir = Global.random_direction()
 

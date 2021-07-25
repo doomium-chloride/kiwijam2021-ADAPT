@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Enemies/Bat.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Drone/WhiteDrone.png" type="Texture" id=1]
 [ext_resource path="res://Player/Boss.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -181,6 +181,8 @@ radius = 174.871
 [node name="Enemy" type="KinematicBody2D"]
 position = Vector2( 377.328, 257.03 )
 rotation = 0.00384045
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -212,6 +214,8 @@ parameters/Flying/blend_position = Vector2( 0.459075, -0.32948 )
 parameters/Idle/blend_position = Vector2( 0, -0.0206186 )
 
 [node name="Sight" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
 shape = SubResource( 22 )

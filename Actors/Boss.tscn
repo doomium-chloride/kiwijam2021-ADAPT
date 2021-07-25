@@ -28,8 +28,6 @@ extents = Vector2( 49.2241, 73.6664 )
 [node name="Boss" type="KinematicBody2D"]
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 4 )
-speed = null
-max_hp = null
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

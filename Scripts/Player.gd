@@ -34,7 +34,23 @@ func _process(delta):
 		Global.emit_signal("release_minions", "is_darkness")
 	if Input.is_action_just_pressed("ui_control"):
 		multiply_minions()
-	pass
+	if Input.is_action_just_pressed("ui_end"):
+		speed *= 2
+	# move minions
+	if Input.is_action_just_released("wasd_d") or \
+	Input.is_action_just_released("wasd_a") or \
+	Input.is_action_just_released("wasd_s") or \
+	Input.is_action_just_released("wasd_d"):
+		Global.emit_signal("move_minions", null, "is_darkness")
+	elif Input.is_action_just_pressed("wasd_w"):
+		Global.emit_signal("move_minions", Vector2.UP, "is_darkness")
+	elif Input.is_action_just_pressed("wasd_a"):
+		Global.emit_signal("move_minions", Vector2.LEFT, "is_darkness")
+	elif Input.is_action_just_pressed("wasd_s"):
+		Global.emit_signal("move_minions", Vector2.DOWN, "is_darkness")
+	elif Input.is_action_just_pressed("wasd_d"):
+		Global.emit_signal("move_minions", Vector2.RIGHT, "is_darkness")
+	
 
 
 func _physics_process(delta):
@@ -92,6 +108,7 @@ func take_damage(damage):
 	if dead:
 		Global.goto_scene(gameOver)
 		queue_free()
+		Global.goto_scene("res://Menu/HomeMenu.tscn")
 
 func multiply_minions():
 	if lose_adapt(max_adapt * 0.99):
