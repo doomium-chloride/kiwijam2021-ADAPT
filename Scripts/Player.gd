@@ -72,8 +72,6 @@ func _physics_process(delta):
 		sprite.play("walking")
 	else:
 		sprite.play("idle")
-	
-
 
 func summon_shadow():
 	if not $ShadowCooldown.is_stopped():
