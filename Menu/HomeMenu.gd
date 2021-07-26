@@ -6,7 +6,7 @@ onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxC
 onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Selector
 
 const play_scene = "res://Levels/BossLevel.tscn"
-const learn = "res://Menu/learn.tscn"
+const learn = "res://Menu/Learn.tscn"
 
 var current_selection = 0
 
